@@ -10,3 +10,6 @@
 #   2 the     word
 #   2 the     copy
 
+file="$1"
+
+cat "$file" | sed 's/[^a-zA-Z0-9 ]//g' |  awk '{for(i=1;i<NF;i++) print $i " "  $(i + 1)}' | tr [A-Z] [a-z] | sort | uniq -c | sort -r | head -n 5
