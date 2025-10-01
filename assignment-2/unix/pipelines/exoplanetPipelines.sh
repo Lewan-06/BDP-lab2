@@ -32,7 +32,7 @@ echo "$intervalPlanets"
 # -- Q4 --
 echo "-- Q4 --"
 # Write a pipeline that outputs the names of two exoplanets that have the highest number of starts in the planetary system.
-highestStars=$(cat exoplanets | awk -F , '{print $3, $1}' | grep "\d" | sort -r | head -n 2 | sed 's/[1-9]* *//')
+highestStars=$(cat exoplanets | awk -F , '{print $3, $1}' | sort -n -r | head -n 2 | sed 's/[1-9]* *//')
 echo "Highest stars:"
 echo "$highestStars"
 
