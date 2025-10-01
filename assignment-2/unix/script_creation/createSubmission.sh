@@ -7,6 +7,12 @@
 # Zip should only contain .sh files and no folders.
 
 # Write code below
+#!/usr/bin/env bash
 
+#Usage (from script_creation): ./createSubmission.sh <output_zip_name>
+mkdir 'temporary'
+find . -name "*.sh" | xargs -I {} cp {} temporary
+zip -j $1 temporary/* 
+rm temporary -r
 
 # To submit on CPM, run from the parent directory (unix).
