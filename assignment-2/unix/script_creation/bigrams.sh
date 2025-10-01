@@ -10,6 +10,8 @@
 #   2 the     word
 #   2 the     copy
 
-file="$1"
+file1="$1"
 
-cat "$file" | sed 's/[^a-zA-Z0-9 ]//g' |  awk '{for(i=1;i<NF;i++) print $i " "  $(i + 1)}' | tr [A-Z] [a-z] | sort | uniq -c | sort -r | head -n 5
+cat "$file1" | sed 's/[^a-zA-Z0-9 ]//g' | tr " " "\n" | tr [A-Z] [a-z] | head -n -1 > a.txt
+cat "$file1" | sed 's/[^a-zA-Z0-9 ]//g' | tr " " "\n" | tr [A-Z] [a-z] | tail -n +2 > aa.txt
+paste a.txt aa.txt | sort | uniq -c | sort -n -r
